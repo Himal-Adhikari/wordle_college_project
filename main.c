@@ -31,7 +31,7 @@ node;
 
 unsigned long hash(char* word, unsigned long size);
 bool load(char* file, node** table, unsigned long size); 
-bool exists(char word[], unsigned long size, node** table);
+bool exists(char word[], unsigned long table_size, node** table);
 void print_word(char word[], int letters_correctness[]);
 void load_word(unsigned long index, char guess[], node** table);
 void check_word(char word[], char guess[], int letter_correctness[]);
@@ -72,7 +72,6 @@ int main() {
   int letters_correctness[LENGTH];
   bool won = false;
 
-  printf("The guess is %s\n", guess);
   while (guesses < GUESSES) {
     char word[1024];
     printf("Enter a %d letter word: ", LENGTH);
@@ -144,8 +143,8 @@ unsigned long hash(char* word, unsigned long size) {
   return hash_value % size;
 } 
 
-bool exists(char word[], unsigned long size, node** table) {
-  unsigned long hash_value = hash(word, size);
+bool exists(char word[], unsigned long table_size, node** table) {
+  unsigned long hash_value = hash(word, table_size);
   node* cursor = table[hash_value];
   if (cursor == NULL) {
     return false;
