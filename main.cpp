@@ -3,8 +3,6 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
-#include <string>
-#include <unordered_map>
 #include <vector>
 
 // Constants
@@ -105,7 +103,6 @@ public:
   }
 };
 
-// Functions
 void print_word(std::string &word, std::vector<int> &letters_correctness) {
   for (int i = 0; i < word.size(); i++) {
     if (letters_correctness[i] == CORRECT) {
@@ -175,10 +172,15 @@ int main() {
   int guesses = 0;
   bool won = false;
 
-  std::cout << GREEN << "Welcome to Wordle!\n" << RESET;
-  std::cout << YELLOW << "You have " << GUESSES
-            << " guesses to guess the word\n"
-            << RESET;
+  std::cout << GREEN << "Welcome to Wordle!" << RESET << std::endl;
+  std::cout << YELLOW << "You have " << GUESSES << " guesses to guess the word"
+            << RESET << std::endl;
+  std::cout << "The correct letter in the right position is represented by "
+            << GREEN << "green color" << RESET << std::endl;
+  std::cout << "The correct letter in the wrong position is represented by "
+            << YELLOW << "yellow color" << RESET << std::endl;
+  std::cout << "The wrong letter represented by " << RED << "red color" << RESET
+            << std::endl;
 
   std::vector<int> letters_correctness(LENGTH);
 
